@@ -1,11 +1,14 @@
-import React from "react";
-import "./style.css";
+import CustomerRewards from './components/CustomerRewards';
+import './App.css';
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
+    <div className="App">
+      <header className="App-header">
+        <CustomerRewards />
+      </header>
     </div>
   );
 }
+
+export default App;
