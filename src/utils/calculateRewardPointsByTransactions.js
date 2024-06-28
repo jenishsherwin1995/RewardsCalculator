@@ -1,8 +1,7 @@
 import calculatePointsByAmount from './calculatePointsByAmount';
 
 const calculateRewardPointsByTransactions = (transactions) => {
-    const pointsByCustomer = {};
-    transactions.forEach((transaction) => {
+    return transactions.reduce((pointsByCustomer, transaction) => {
         const { customerId, transactionDate, amount } = transaction;
         const date = new Date(transactionDate);
         const month = date.toLocaleString('default', { month: 'long' }); //get month name by given date
@@ -21,7 +20,7 @@ const calculateRewardPointsByTransactions = (transactions) => {
         pointsByCustomer[customerId].totalRewardPoints += points;
         pointsByCustomer[customerId].totalAmount += amount;
 
-    });
-    return pointsByCustomer;
+        return pointsByCustomer;
+    }, {});
 }
 export default calculateRewardPointsByTransactions;
