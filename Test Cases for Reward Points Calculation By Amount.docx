@@ -1,0 +1,112 @@
+Test Cases for Reward Points Calculation By Amount
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Purpose
+The purpose of these test cases is to ensure that the reward points calculation function behaves as expected under different scenarios and edge cases.
+
+Test Stack
+**Frontend: ** React JS
+ **Testing: ** Jest & React Testing Library
+
+Location 
+src/__tests__/calculatePointsByAmount.js
+
+
+Test Cases
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 1: Transaction Amount Over $100
+
+Description
+Test the calculation of reward points for a transaction where the amount spent is over $100.
+
+Input
+●	Amount: 120 (in $)
+
+Expected Output
+●	Earned points: 90   // 2*(120-100) + 1*(100-50)
+
+Test Steps
+1.	Execute the reward points calculation function with the provided input.
+2.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 2 : Transaction Amount Between $50 And $100
+
+Description
+Test the calculation of reward points for a transaction where the amount spent is between $50 And $100.
+
+Input
+●	Amount: 75 (in $)
+
+Expected Output
+●	Earned points: 25   // 1*(75-50)
+
+Test Steps
+3.	Execute the reward points calculation function with the provided input.
+4.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 3  : Transaction Amount Exactly $100
+
+Description
+Test the calculation of reward points for a transaction where the amount for exactly $100.
+
+Input
+●	Amount: 100 (in $)
+
+Expected Output
+●	Earned points: 50   // 1*(100-50)
+
+Test Steps
+5.	Execute the reward points calculation function with the provided input.
+6.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 4  : Transaction Amount Exactly $50
+
+Description
+Test the calculation of reward points for a transaction where the amount for exactly $50.
+
+Input
+●	Amount: 50 (in $)
+
+Expected Output
+●	Earned points: 0   // No Points
+
+Test Steps
+1. Execute the reward points calculation function with the provided input.
+2. Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 5  : Transaction Amount Below $50
+
+Description
+Test the calculation of reward points for a transaction where the amount for below $50.
+
+Input
+●	Amount: 30 (in $)
+
+Expected Output
+●	Earned points: 0   // No Points
+
+Test Steps
+1. Execute the reward points calculation function with the provided input.
+2. Verify that the total points earned for customer match the expected value.
+
+
+
+

@@ -1,0 +1,181 @@
+Test Cases for Reward Points Calculation by Customer Transactions
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Purpose
+
+The purpose of these test cases is to ensure that the reward points calculation function behaves as expected under different scenarios and edge cases.
+
+Test Stack
+**Frontend: ** React JS
+ **Testing: ** Jest & React Testing Library
+
+Location 
+src/__tests__/ calculateRewardPointsByTransactions.js
+
+Test Cases
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 1: Customer Earned Reward Points for a Single Transaction
+
+Description
+Test the calculation of earned reward points for a single transaction with single customer.
+
+Input
+[
+      { 
+        transactionId: 2,
+        customerId: 1,
+        customerName: "Customer One",
+        transactionDate: '2024-02-05', 
+        amount: 75
+      }
+    ]
+
+
+Expected Output
+    {                                             
+        '1': {                                      
+        monthlyRewardPoints: { 
+            February: {
+                amount: 75,
+                points: 25,
+            } },
+        totalRewardPoints: 25,
+        totalAmount: 75
+        }
+    }
+
+Test Steps
+1.	Execute the reward points calculation function with the provided input.
+2.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 2: Customer Earned Reward Points for multiple transactions with 2 customers.
+
+Description
+Test the calculation of earned reward points for multiple transactions with 2 customers.
+
+Input
+[
+      { 
+        transactionId: 1,
+        customerId: 1,
+        customerName: "Customer One",
+        transactionDate: '2024-02-05', 
+        amount: 75
+      },
+      { 
+        transactionId: 2,
+        customerId: 2,
+        customerName: "Customer One",
+        transactionDate: '2024-02-05', 
+        amount: 100
+      }
+    ]
+
+Expected Output
+    {                                             
+      '1': {                                      
+        monthlyRewardPoints: { 
+          February: {
+          	amount: 75,
+          	points: 25,
+        } },
+        totalRewardPoints: 25,
+        totalAmount: 75
+      },
+      '2': {                                      
+        monthlyRewardPoints: { 
+          February: {
+          	amount: 100,
+          	points: 50,
+        } },
+        totalRewardPoints: 50,
+        totalAmount: 100
+      }
+    }.
+
+Test Steps
+1.	Execute the reward points calculation function with the provided input.
+2.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 3 : Customer Earned Reward Points for no transactions.
+
+Description
+Test the calculation of earned reward points for no transactions.
+
+Input
+[ ]
+
+Expected Output
+{ }
+
+Test Steps
+1.	Execute the reward points calculation function with the provided input.
+2.	Verify that the total points earned for customer match the expected value.
+
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+
+Test Case 4 : Customer Earned Reward Points for transactions a customer for below $50 amount.
+
+Description
+Test the calculation of earned reward points for transactions a customer for below $50 amount.
+
+Input
+    [
+      { 
+        transactionId: 1,
+        customerId: 1,
+        customerName: "Customer One",
+        transactionDate: '2024-02-05', 
+        amount: 30
+      },
+      { 
+        transactionId: 2,
+        customerId: 2,
+        customerName: "Customer One",
+        transactionDate: '2024-02-05', 
+        amount: 40
+      }
+    ]
+
+
+Expected Output
+{                                             
+      '1': {                                      
+        monthlyRewardPoints: { 
+          February: {
+          amount: 30,
+          points: 0,
+        } },
+        totalRewardPoints: 0,
+        totalAmount: 30
+      },
+      '2': {                                      
+        monthlyRewardPoints: { 
+          February: {
+          amount: 40,
+          points: 0,
+        } },
+        totalRewardPoints: 0,
+        totalAmount: 40
+      }
+    }
+    
+Test Steps
+1.	Execute the reward points calculation function with the provided input.
+2.	Verify that the total points earned for customer match the expected value.
+
+
+
