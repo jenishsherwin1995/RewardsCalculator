@@ -1,11 +1,11 @@
 import { Box, TableContainer, TableBody, TableCell, TableRow, TableHead, Table, Paper } from "@mui/material";
 import { constants } from "../../../utils/constants";
-import './styles.css';
+import './CustomerRewardSingle.css';
 
 const CustomerRewardSingle = ({ rewardPointsData, customerId }) => {
     return (
         <Box className="customerRewards">
-            <h3> {constants.CUSTOMER_HEADING} {customerId} </h3>
+            <h3>{`${customerId}. ${rewardPointsData[customerId].customerName}`}</h3>
             <Paper sx={{ width: '100%', overflow: 'hidden' }}>
                 <TableContainer sx={{ height: 150 }}>
                     <Table stickyHeader sx={{ minWidth: 100 }} className="rewardTable" aria-label="sticky table">

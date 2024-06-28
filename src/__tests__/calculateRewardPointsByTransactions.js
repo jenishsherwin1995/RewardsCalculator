@@ -13,7 +13,8 @@ describe('calculate Reward Points By Transactions', () => {
     ];
 
     const expected =  {                                             
-      '1': {                                      
+      '1': {  
+        customerName: "Customer One",                                    
         monthlyRewardPoints: { 
           February: {
           amount: 75,
@@ -40,14 +41,15 @@ describe('calculate Reward Points By Transactions', () => {
       { 
         transactionId: 2,
         customerId: 2,
-        customerName: "Customer One",
+        customerName: "Customer Two",
         transactionDate: '2024-02-05', 
         amount: 100
       }
     ];
 
     const expected =  {                                             
-      '1': {                                      
+      '1': {          
+        customerName: "Customer One",                            
         monthlyRewardPoints: { 
           February: {
           amount: 75,
@@ -56,7 +58,8 @@ describe('calculate Reward Points By Transactions', () => {
         totalRewardPoints: 25,
         totalAmount: 75
       },
-      '2': {                                      
+      '2': { 
+        customerName: "Customer Two",                                     
         monthlyRewardPoints: { 
           February: {
           amount: 100,
@@ -97,7 +100,8 @@ describe('calculate Reward Points By Transactions', () => {
     ];
 
     const expected =  {                                             
-      '1': {                                      
+      '1': {        
+        customerName: "Customer One",                              
         monthlyRewardPoints: { 
           February: {
           amount: 30,
@@ -106,7 +110,8 @@ describe('calculate Reward Points By Transactions', () => {
         totalRewardPoints: 0,
         totalAmount: 30
       },
-      '2': {                                      
+      '2': {   
+        customerName: 'Customer One',                                   
         monthlyRewardPoints: { 
           February: {
           amount: 40,

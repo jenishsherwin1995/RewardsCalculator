@@ -51,14 +51,14 @@
     { 
         "transactionId": 8, 
         "customerId": 4,
-        "customerName": "Customer Two",
+        "customerName": "Customer Four",
         "transactionDate": "2024-03-05", 
         "amount": 50
     },
     { 
         "transactionId": 9, 
-        "customerId": 6,
-        "customerName": "Customer Two",
+        "customerId": 5,
+        "customerName": "Customer Five",
         "transactionDate": "2024-03-05", 
         "amount": 50
     }

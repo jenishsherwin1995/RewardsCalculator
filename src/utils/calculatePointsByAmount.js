@@ -1,4 +1,5 @@
 import {RewardThresholdAmount} from '../enum/RewardThresholdAmountEnum';
+import logger from '../logger';
 
 const calculatePointsByAmount = (amount) => {
     let points = 0;
@@ -9,6 +10,7 @@ const calculatePointsByAmount = (amount) => {
     if(amount > RewardThresholdAmount.BETWEEN_50_AND_100){
         points += 1 * (amount - RewardThresholdAmount.BETWEEN_50_AND_100);
     }
+    logger.log('Earn Reward points By Amount: ', points);
     return points;
 };
 

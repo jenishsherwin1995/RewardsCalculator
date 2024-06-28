@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Grid, Box} from "@mui/material";
 import calculateRewardPointsByTransactions from '../../utils/calculateRewardPointsByTransactions';
 import { fetchCustomerTransactionData } from "../../services/apiService";
-import CustomerRewardSingle from "./CustomerRewardSingle";
+import CustomerRewardSingle from "./CustomerRewardSingle/CustomerRewardSingle";
 import { constants } from "../../utils/constants";
-import './styles.css';
+import { Grid, Box} from "@mui/material";
+import logger from '../../logger';
+import './CustomerRewards.css';
 
 const CustomerRewards = () => {
     const [transactionData, setTransactionData] = useState([]);
@@ -15,8 +16,10 @@ const CustomerRewards = () => {
         const getData = async () => {
             try {
                 const data = await fetchCustomerTransactionData();
+                logger.log('Set Fetched Transaction Data', data);
                 setTransactionData(data);
             } catch (error) {
+                logger.error(error);
                 setError(error);
             }
         }
@@ -25,6 +28,7 @@ const CustomerRewards = () => {
 
     useEffect(() => {
         const points = calculateRewardPointsByTransactions(transactionData);
+        logger.log('Set Earned Reward Points By Transactions', points);
         setRewardPointsData(points);
     }, [transactionData]);
 
