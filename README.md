@@ -23,8 +23,8 @@ Given a record of every transaction during a three month period, calculate the r
 
 ### Setup
 
-1. **Clone the repository:**
-    currently in local machine, will update once avalable code into repo
+1. **Clone the repository:**    
+https://stackblitz.com/~/github.com/sushmita30jan/reward-calculator
 
 2. **Install dependencies:**
    npm install

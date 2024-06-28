@@ -32,7 +32,6 @@ const CustomerRewards = () => {
 
     return (
         <div>
-            <h2>{constants.CUSTOM_REWARD_POINTS}</h2>
             {Object.keys(rewardPointsData).map((customerId) => (                
                 <div key={customerId}>
                     <h3> {constants.CUSTOMER_HEADING} {customerId} </h3>
