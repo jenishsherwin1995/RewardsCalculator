@@ -52,9 +52,14 @@ reward-calculator/
 │   ├── __tests__/
 │   │   ├── calculatePointsByAmount.js
 │   │   └── calculateRewardPointsByTransactions.js
+        └── customerRewards.js
 │   ├── components/
 │   │   ├── CustomerRewards
-│   │       ├── index.jsx
+│   │   ├    ├── CustomerRewards.js
+│   │   ├    ├── CustomerRewards.css
+    │   │   ├── CustomerRewardSingle
+    │   │   ├    ├── CustomerRewardSingle.js
+    │   │   ├    ├── CustomerRewardSingle.css
 │   │   └── ...
 │   ├── enum/
 │   │   ├── RewardThresholdAmountEnum.js
@@ -67,7 +72,7 @@ reward-calculator/
 │   │   └── calculateRewardPointsByTransactions
 │   │   └── constant.js
 │   ├── App.css
-│   ├── App.jsx
+│   ├── App.js
 │   ├── App.test.js
 │   ├── index.js
 │   ├── setupTests.js
