@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Grid, Box} from "@mui/material";
 import calculateRewardPointsByTransactions from '../../utils/calculateRewardPointsByTransactions';
-import { fetchCustomerTransactionData } from "../../services/fetchCustomerTransactionData";
+import { fetchCustomerTransactionData } from "../../services/apiService";
 import CustomerRewardSingle from "./CustomerRewardSingle";
 import { constants } from "../../utils/constants";
 import './styles.css';
