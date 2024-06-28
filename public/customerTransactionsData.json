@@ -40,5 +40,26 @@
         "customerName": "Customer Two",
         "transactionDate": "2024-03-05", 
         "amount": 50
+    },
+    { 
+        "transactionId": 7, 
+        "customerId": 3,
+        "customerName": "Customer Two",
+        "transactionDate": "2024-03-05", 
+        "amount": 50
+    },
+    { 
+        "transactionId": 8, 
+        "customerId": 4,
+        "customerName": "Customer Two",
+        "transactionDate": "2024-03-05", 
+        "amount": 50
+    },
+    { 
+        "transactionId": 9, 
+        "customerId": 6,
+        "customerName": "Customer Two",
+        "transactionDate": "2024-03-05", 
+        "amount": 50
     }
 ]
