@@ -21,7 +21,7 @@ const calculateRewardPointsByTransactions = (transactions) => {
         pointsByCustomer[customerId].customerName = customerName;
         pointsByCustomer[customerId].totalRewardPoints += points;
         pointsByCustomer[customerId].totalAmount += amount;
-        logger.log('Earn Reward points By Customer: ', pointsByCustomer);
+                logger.log('Earn Reward points By Customer: ', pointsByCustomer); 
         return pointsByCustomer;
     }, {});
 }

@@ -56,7 +56,7 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.js$": "babel-jest"
+      "^.+\\.jsx?$": "babel-jest"
     },
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.js"

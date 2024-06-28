@@ -93,7 +93,7 @@ describe('calculate Reward Points By Transactions', () => {
       { 
         transactionId: 2,
         customerId: 2,
-        customerName: "Customer One",
+        customerName: "Customer Two",
         transactionDate: '2024-02-05', 
         amount: 40
       }
@@ -111,7 +111,7 @@ describe('calculate Reward Points By Transactions', () => {
         totalAmount: 30
       },
       '2': {   
-        customerName: 'Customer One',                                   
+        customerName: "Customer Two",                                   
         monthlyRewardPoints: { 
           February: {
           amount: 40,
