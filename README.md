@@ -13,7 +13,7 @@ Given a record of every transaction during a three month period, calculate the r
 ## Tech Stack
 
 - **Frontend:** React JS
-- **Testing:** React Testing Library
+- **Testing:** Jest & React Testing Library
 
 ## Getting Started
 
