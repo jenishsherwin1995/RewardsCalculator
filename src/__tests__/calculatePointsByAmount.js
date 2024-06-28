@@ -6,7 +6,7 @@ describe('Testcase for calculate Points By Amount', () => {
     });
 
     test('should earned points correctly for amounts between $50 and $100', () => {
-    expect(calculatePointsByAmount(320)).toBe(490); // 1*(75-50)
+    expect(calculatePointsByAmount(75)).toBe(25); // 1*(75-50)
     });
 
     test('should earned points correctly for amounts exactly $100', () => {
