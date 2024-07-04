@@ -15,12 +15,12 @@ const calculateRewardPointsByTransactions = (transactions) => {
             pointsByCustomer[customerId].monthlyRewardPoints[month] = { points: 0, amount: 0 };
         }
 
-        pointsByCustomer[customerId].monthlyRewardPoints[month].points += points;
-        pointsByCustomer[customerId].monthlyRewardPoints[month].amount += amount;
+        pointsByCustomer[customerId].monthlyRewardPoints[month].points += points;  //set points on month basis
+        pointsByCustomer[customerId].monthlyRewardPoints[month].amount += amount;  // set amount on month basis
 
         pointsByCustomer[customerId].customerName = customerName;
-        pointsByCustomer[customerId].totalRewardPoints += points;
-        pointsByCustomer[customerId].totalAmount += amount;
+        pointsByCustomer[customerId].totalRewardPoints += points;  //added total rewards by reduce method
+        pointsByCustomer[customerId].totalAmount += amount; // added total amount by reduce method
         logger.log('Earn Reward points By Customer: ', pointsByCustomer);
         return pointsByCustomer;
     }, {});
