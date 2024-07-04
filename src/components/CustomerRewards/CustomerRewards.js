@@ -3,7 +3,7 @@ import calculateRewardPointsByTransactions from '../../utils/calculateRewardPoin
 import { fetchCustomerTransactionData } from "../../services/apiService";
 import CustomerRewardSingle from "./CustomerRewardSingle/CustomerRewardSingle";
 import { constants } from "../../utils/constants";
-import { Grid, Box} from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import logger from '../../logger';
 import './CustomerRewards.css';
 
@@ -42,13 +42,12 @@ const CustomerRewards = () => {
             <h2 className="rewardHeading">{constants.CUSTOM_REWARD_POINTS}</h2>
             <Grid container spacing={2}>
                 {Object.keys(rewardPointsData).map((customerId) => (
-                        <Grid item xs={4} key={customerId}>
-                            <CustomerRewardSingle rewardPointsData={rewardPointsData} customerId={customerId} />
-                        </Grid>
+                    <Grid item xs={4} key={customerId}>
+                        <CustomerRewardSingle rewardPointsData={rewardPointsData} customerId={customerId} />
+                    </Grid>
                 ))}
             </Grid>
         </Box>
     );
 };
-
 export default CustomerRewards;
