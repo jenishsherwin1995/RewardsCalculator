@@ -34,7 +34,7 @@ const CustomerRewards = () => {
 
 
     if (error) {
-        return <p>{error.message}</p>
+        return <p className="rewardHeading">{error.message}</p>
     }
 
     return (
