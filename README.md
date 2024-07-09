@@ -43,6 +43,12 @@ The frontend application will be available at `http://localhost:3000`.
 
 The application uses mock data to simulate the rewards calculation. The mock data is defined in `public/customerTransactionsData.json`.
 
+### Running Appilcation Screenshots
+![Screenshot 2024-07-09 115924](https://github.com/sushmita30jan/reward-calculator/assets/126414273/81bc6101-ed59-473c-9a58-302206c03c52)
+Error - 
+![Screenshot 2024-07-09 120153](https://github.com/sushmita30jan/reward-calculator/assets/126414273/de7998fe-cbc8-4689-b03a-d7869b3360de)
+
+
 ### File Structure
 
 reward-calculator/
