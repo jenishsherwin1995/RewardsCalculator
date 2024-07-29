@@ -43,10 +43,32 @@ The frontend application will be available at `http://localhost:3000`.
 
 The application uses mock data to simulate the rewards calculation. The mock data is defined in `public/customerTransactionsData.json`.
 
+## Features
+
+- Calculate Reward points earned for each customer per month and total
+- Show data based on latest consecutive N month period of time
+  - Transaction data can be with in the same year or spans different years
+
+* Data is grouped based on years if it spans different years
+* Multiple transactions within the month are sumed up together
+* Rounded up rewards
+
+* Loading screen and Error handling is implemented
+* Test cases for all of the above scenarios are added
+* Transaction data is logged
+* 
+
 ### Running Appilcation Screenshots
-![Screenshot 2024-07-09 115924](https://github.com/sushmita30jan/reward-calculator/assets/126414273/81bc6101-ed59-473c-9a58-302206c03c52)
+![image](https://github.com/user-attachments/assets/4e064bb6-929b-424a-8054-ae5127528d55)
+
+UI with Logger - 
+![image](https://github.com/user-attachments/assets/3ac04ff3-7910-453a-9a29-43edd8d7cdd4)
+
 Error - 
 ![Screenshot 2024-07-09 120153](https://github.com/sushmita30jan/reward-calculator/assets/126414273/de7998fe-cbc8-4689-b03a-d7869b3360de)
+
+Loading - 
+![image](https://github.com/user-attachments/assets/248248f4-af7e-46e9-9cfa-57d6113fbcdf)
 
 
 ### File Structure
