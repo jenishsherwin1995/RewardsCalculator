@@ -11,7 +11,7 @@ const calculatePointsByAmount = (amount) => {
         points += 1 * (amount - RewardThresholdAmount.BETWEEN_50_AND_100);
     }
     logger.log('Earn Reward points By Amount: ', points);
-    return points;
+    return Math.round(points);
 };
 
 export default calculatePointsByAmount;

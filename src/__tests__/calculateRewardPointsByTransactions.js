@@ -15,14 +15,21 @@ describe('calculate Reward Points By Transactions', () => {
     const expected = {
       '1': {
         customerName: "Customer One",
-        monthlyRewardPoints: {
-          February: {
-            amount: 75,
-            points: 25,
+        yearlyRewardPoints: {
+          2024: {
+              monthlyRewardPoints: {
+                  1: {
+                      monthName : "February",
+                      points : 25,
+                      amount : 75
+                  }
+              },
+              "totalYearlyRewardPoints": 25,
+              "totalYearlyAmount": 75
           }
-        },
-        totalRewardPoints: 25,
-        totalAmount: 75
+      },
+      "totalRewardPoints": 25,
+      "totalAmount": 75
       }
     };
 
@@ -44,32 +51,46 @@ describe('calculate Reward Points By Transactions', () => {
         customerId: 2,
         customerName: "Customer Two",
         transactionDate: '2024-02-05',
-        amount: 100
+        amount: 100.5
       }
     ];
 
     const expected = {
       '1': {
         customerName: "Customer One",
-        monthlyRewardPoints: {
-          February: {
-            amount: 75,
-            points: 25,
-          }
+        yearlyRewardPoints: {
+            2024: {
+                monthlyRewardPoints: {
+                    1: {
+                        monthName : "February",
+                        points : 25,
+                        amount : 75
+                    }
+                },
+                "totalYearlyRewardPoints": 25,
+                "totalYearlyAmount": 75
+            }
         },
-        totalRewardPoints: 25,
-        totalAmount: 75
+        "totalRewardPoints": 25,
+        "totalAmount": 75
       },
       '2': {
         customerName: "Customer Two",
-        monthlyRewardPoints: {
-          February: {
-            amount: 100,
-            points: 50,
+        yearlyRewardPoints: {
+          2024: {
+              monthlyRewardPoints: {
+                  1: {
+                      monthName : "February",
+                      points : 51,
+                      amount : 100.5
+                  }
+              },
+              "totalYearlyRewardPoints": 51,
+              "totalYearlyAmount": 100.5
           }
-        },
-        totalRewardPoints: 50,
-        totalAmount: 100
+      },
+      "totalRewardPoints": 51,
+      "totalAmount": 100.5
       }
     };
 
@@ -105,25 +126,39 @@ describe('calculate Reward Points By Transactions', () => {
     const expected = {
       '1': {
         customerName: "Customer One",
-        monthlyRewardPoints: {
-          February: {
-            amount: 30,
-            points: 0,
+        yearlyRewardPoints: {
+          2024: {
+              monthlyRewardPoints: {
+                  1: {
+                      monthName : "February",
+                      points : 0,
+                      amount : 30
+                  }
+              },
+              "totalYearlyRewardPoints": 0,
+              "totalYearlyAmount": 30
           }
-        },
-        totalRewardPoints: 0,
-        totalAmount: 30
+      },
+      "totalRewardPoints": 0,
+      "totalAmount": 30
       },
       '2': {
         customerName: "Customer Two",
-        monthlyRewardPoints: {
-          February: {
-            amount: 40,
-            points: 0,
+        yearlyRewardPoints: {
+          2024: {
+              monthlyRewardPoints: {
+                  1: {
+                      monthName : "February",
+                      points : 0,
+                      amount : 40
+                  }
+              },
+              "totalYearlyRewardPoints": 0,
+              "totalYearlyAmount": 40
           }
-        },
-        totalRewardPoints: 0,
-        totalAmount: 40
+      },
+      "totalRewardPoints": 0,
+      "totalAmount": 40
       }
     };
 

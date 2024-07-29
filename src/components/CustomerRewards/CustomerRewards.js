@@ -11,8 +11,10 @@ const CustomerRewards = () => {
     const [transactionData, setTransactionData] = useState([]);
     const [rewardPointsData, setRewardPointsData] = useState({});
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const getData = async () => {
             try {
                 const data = await fetchCustomerTransactionData();
@@ -20,6 +22,7 @@ const CustomerRewards = () => {
                 setTransactionData(data);
             } catch (error) {
                 logger.error(error);
+                setIsLoading(false);
                 setError(error);
             }
         }
@@ -27,10 +30,18 @@ const CustomerRewards = () => {
     }, [])
 
     useEffect(() => {
-        const points = calculateRewardPointsByTransactions(transactionData);
-        logger.log('Set Earned Reward Points By Transactions', points);
-        setRewardPointsData(points);
+        if (transactionData && transactionData.length > 0) {
+            const points = calculateRewardPointsByTransactions(transactionData);
+            setRewardPointsData(points);
+            logger.log('Set Earned Reward Points By Transactions', points);
+        }
     }, [transactionData]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, constants.LOAD_TIMEOUT);
+    }, [rewardPointsData])
 
 
     if (error) {
@@ -39,14 +50,24 @@ const CustomerRewards = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <h2 className="rewardHeading">{constants.CUSTOM_REWARD_POINTS}</h2>
-            <Grid container spacing={2}>
-                {Object.keys(rewardPointsData).map((customerId) => (
-                    <Grid item xs={4} key={customerId}>
-                        <CustomerRewardSingle rewardPointsData={rewardPointsData} customerId={customerId} />
-                    </Grid>
-                ))}
-            </Grid>
+            {!isLoading ?
+                (
+                    <Box>
+                        <h2 className="rewardHeading">{constants.CUSTOM_REWARD_POINTS}</h2>
+                        <Grid container spacing={2}>
+                            {Object.keys(rewardPointsData).sort((a, b) => a - b).map((customerId) => (
+                                <Grid item xs={6} key={customerId}>
+                                    <CustomerRewardSingle rewardPointsData={rewardPointsData} customerId={customerId} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+                )
+                :
+                (
+                    <Box className="loading">Loading...</Box>
+                )
+            }
         </Box>
     );
 };
