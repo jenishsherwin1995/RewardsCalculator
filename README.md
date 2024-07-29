@@ -68,7 +68,8 @@ Error -
 ![Screenshot 2024-07-09 120153](https://github.com/sushmita30jan/reward-calculator/assets/126414273/de7998fe-cbc8-4689-b03a-d7869b3360de)
 
 Loading - 
-![image](https://github.com/user-attachments/assets/248248f4-af7e-46e9-9cfa-57d6113fbcdf)
+![image](https://github.com/user-attachments/assets/2923a02b-8c9e-465b-aa9b-08be286be41c)
+
 
 
 ### File Structure
