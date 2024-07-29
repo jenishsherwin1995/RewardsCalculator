@@ -59,10 +59,10 @@ The application uses mock data to simulate the rewards calculation. The mock dat
 * 
 
 ### Running Appilcation Screenshots
-![image](https://github.com/user-attachments/assets/4e064bb6-929b-424a-8054-ae5127528d55)
+![image](https://github.com/user-attachments/assets/31a4db54-0d79-403a-9fac-01cfbb0b6a5e)
 
 UI with Logger - 
-![image](https://github.com/user-attachments/assets/3ac04ff3-7910-453a-9a29-43edd8d7cdd4)
+![image](https://github.com/user-attachments/assets/68c37c27-3576-42d3-8ded-7c92105d7ffd)
 
 Error - 
 ![Screenshot 2024-07-09 120153](https://github.com/sushmita30jan/reward-calculator/assets/126414273/de7998fe-cbc8-4689-b03a-d7869b3360de)
