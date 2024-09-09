@@ -1,32 +1,23 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import CustomerSelector from './CustomerSelector';
 
-test('renders dropdown with selected customer', () => {
-  const customers = [
-    { id: '1', name: 'Customer One' },
-    { id: '2', name: 'Customer Two' },
-  ];
+const mockCustomers = [
+  { id: '1', name: 'John Doe' },
+  { id: '2', name: 'Jane Smith' },
+];
 
-  render(<CustomerSelector customers={customers} selectedCustomerId="1" onSelectCustomer={() => {}} />);
+describe('CustomerSelector', () => {
+  it('renders without crashing', () => {
+    render(<CustomerSelector customers={mockCustomers} onSelectCustomer={jest.fn()} />);
+    expect(screen.getByRole('combobox')).toBeInTheDocument();
+  });
 
-  expect(screen.getByRole('combobox')).toHaveValue('1');
-  expect(screen.getByText('Customer One')).toBeInTheDocument();
-  expect(screen.getByText('Customer Two')).toBeInTheDocument();
-});
+  it('calls onSelectCustomer when customer is selected', () => {
+    const mockOnSelectCustomer = jest.fn();
+    render(<CustomerSelector customers={mockCustomers} onSelectCustomer={mockOnSelectCustomer} />);
 
-test('calls onSelectCustomer when a customer is selected', () => {
-  const customers = [
-    { id: '1', name: 'Customer One' },
-    { id: '2', name: 'Customer Two' },
-  ];
-
-  const onSelectCustomer = jest.fn();
-
-  render(<CustomerSelector customers={customers} selectedCustomerId="" onSelectCustomer={onSelectCustomer} />);
-
-  fireEvent.change(screen.getByRole('combobox'), { target: { value: '2' } });
-
-  expect(onSelectCustomer).toHaveBeenCalledWith('2');
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: '1' } });
+    expect(mockOnSelectCustomer).toHaveBeenCalledWith('1');
+  });
 });

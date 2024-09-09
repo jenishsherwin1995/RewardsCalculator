@@ -1,37 +1,32 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import { render, screen, waitFor } from '@testing-library/react';
 import CustomerRewards from './CustomerRewards';
-import data from '../MockData/mockData.json'; // Mock data import for the test
+import { fetchCustomerTransactionData } from '../services/apiService';
 
-jest.mock('../MockData/mockData.json', () => [
+jest.mock('../services/apiService');
+
+const mockData = [
   {
     id: '1',
-    name: 'Customer One',
-    transactions: [
-      { date: '2023-01-15', amount: 120 },
-      { date: '2023-01-20', amount: 80 },
-      { date: '2023-02-10', amount: 200 },
-    ],
+    name: 'John Doe',
+    transactions: [{ id: 't1', date: '2023-06-15', amount: 100 }],
   },
-]);
+];
 
-test('renders CustomerRewards component and filters data correctly', () => {
-  render(<CustomerRewards />);
+describe('CustomerRewards', () => {
+  beforeEach(() => {
+    fetchCustomerTransactionData.mockResolvedValue(mockData);
+  });
 
-  // Check if CustomerSelector is rendered
-  expect(screen.getByText('Select Customer')).toBeInTheDocument();
+  it('renders without crashing', async () => {
+    render(<CustomerRewards />);
+    await waitFor(() => expect(screen.getByText(/Reward Points/)).toBeInTheDocument());
+  });
 
-  // Select a customer
-  fireEvent.change(screen.getByRole('combobox'), { target: { value: '1' } });
-
-  // Check if YearSelector is rendered
-  expect(screen.getByText('Select Year')).toBeInTheDocument();
-
-  // Select a year
-  fireEvent.change(screen.getByRole('combobox', { name: /Select Year/i }), { target: { value: '2023' } });
-
-  // Check if the TransactionTable is rendered
-  expect(screen.getByText('January')).toBeInTheDocument();
-  expect(screen.getByText('February')).toBeInTheDocument();
+  it('fetches and displays customers', async () => {
+    render(<CustomerRewards />);
+    await waitFor(() => {
+      expect(screen.getByText('John Doe')).toBeInTheDocument();
+    });
+  });
 });

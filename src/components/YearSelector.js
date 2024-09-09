@@ -1,10 +1,11 @@
 import React from 'react';
+import {constants} from '../utils/constants'
 
 const YearSelector = ({ years, selectedYear, onSelectYear }) => {
   return (
     <div>
       <select onChange={(e) => onSelectYear(e.target.value)} value={selectedYear}>
-        <option value="">Select All Year</option>
+  <option value="">{constants.YEAR}</option>
         {years.map(year => (
           <option key={year} value={year}>
             {year}

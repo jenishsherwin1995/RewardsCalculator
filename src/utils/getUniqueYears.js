@@ -1,4 +1,3 @@
-// Helper function to extract unique years from transactions
 export const getUniqueYears = (customers) => {
     const years = new Set();
     customers.forEach(customer => {
@@ -7,6 +6,6 @@ export const getUniqueYears = (customers) => {
         years.add(year);
       });
     });
-    return Array.from(years).sort((a, b) => b - a); // Sort years in descending order
+    return Array.from(years).sort((a, b) => b - a);
   };
   

@@ -1,26 +1,25 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import YearSelector from './YearSelector';
 
-test('renders year selector with years', () => {
-  const years = ['2022', '2023'];
+const mockYears = ['2023', '2024'];
 
-  render(<YearSelector years={years} selectedYear="" onSelectYear={() => {}} />);
+describe('YearSelector', () => {
+  it('renders without crashing', () => {
+    render(<YearSelector years={mockYears} onSelectYear={jest.fn()} />);
+    expect(screen.getByRole('combobox')).toBeInTheDocument();
+  });
 
-  expect(screen.getByText('Select Year')).toBeInTheDocument();
-  expect(screen.getByText('2022')).toBeInTheDocument();
-  expect(screen.getByText('2023')).toBeInTheDocument();
-});
+  it('displays year options', () => {
+    render(<YearSelector years={mockYears} onSelectYear={jest.fn()} />);
+    expect(screen.getByText('2023')).toBeInTheDocument();
+    expect(screen.getByText('2024')).toBeInTheDocument();
+  });
 
-test('calls onSelectYear when a year is selected', () => {
-  const years = ['2022', '2023'];
-
-  const onSelectYear = jest.fn();
-
-  render(<YearSelector years={years} selectedYear="" onSelectYear={onSelectYear} />);
-
-  fireEvent.change(screen.getByRole('combobox'), { target: { value: '2023' } });
-
-  expect(onSelectYear).toHaveBeenCalledWith('2023');
+  it('calls onSelectYear when a year is selected', () => {
+    const mockOnSelectYear = jest.fn();
+    render(<YearSelector years={mockYears} onSelectYear={mockOnSelectYear} />);
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: '2023' } });
+    expect(mockOnSelectYear).toHaveBeenCalledWith('2023');
+  });
 });

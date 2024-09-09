@@ -1,6 +1,7 @@
 import React from 'react';
 import './CustomerDropdown.css';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { constants } from '../utils/constants'
 
 const CustomerDropdown = ({ customers, onSelectCustomer }) => {
   const handleChange = (event) => {
@@ -10,7 +11,7 @@ const CustomerDropdown = ({ customers, onSelectCustomer }) => {
   return (
     <div className="dropdown-container">
       <FormControl fullWidth>
-        <InputLabel id="customer-select-label">Select Customer</InputLabel>
+        <InputLabel id="customer-select-label">{constants.CUSTOMER_HEADING}</InputLabel>
         <Select
           labelId="customer-select-label"
           value=""
@@ -18,7 +19,7 @@ const CustomerDropdown = ({ customers, onSelectCustomer }) => {
           displayEmpty
         >
           <MenuItem value="" disabled>
-            Select Customer
+            {constants.CUSTOMER_HEADING}
           </MenuItem>
           {customers.map((customer) => (
             <MenuItem key={customer.id} value={customer.id}>

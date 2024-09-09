@@ -15,12 +15,9 @@ const CustomerRewards = () => {
   });
 
   useEffect(() => {
-    
-    const fetchData = async () => {
+    (async () => {
       try {
-        
         const data = await fetchCustomerTransactionData();
-        
         setCustomerYear(prevState => ({
           ...prevState,
           customers: data,
@@ -28,11 +25,9 @@ const CustomerRewards = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    };
-
-    fetchData();
+    })();
   }, []);
-
+  
   const { customers, selectedCustomerId, selectedYear } = customerYearState;
 
   const selectedCustomer = customers.find(customer => customer.id === selectedCustomerId);

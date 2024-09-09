@@ -1,32 +1,29 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import CustomerDropdown from './CustomerDropdown';
 
-test('renders dropdown with customers', () => {
-  const customers = [
-    { id: '1', name: 'Customer One' },
-    { id: '2', name: 'Customer Two' },
-  ];
+const mockCustomers = [
+  { id: '1', name: 'John Doe' },
+  { id: '2', name: 'Jane Smith' },
+];
 
-  render(<CustomerDropdown customers={customers} onSelectCustomer={() => {}} />);
+describe('CustomerDropdown', () => {
+  it('renders without crashing', () => {
+    render(<CustomerDropdown customers={mockCustomers} onSelectCustomer={jest.fn()} />);
+    expect(screen.getByLabelText(/Customer/)).toBeInTheDocument();
+  });
 
-  expect(screen.getByText('Select Customer')).toBeInTheDocument();
-  expect(screen.getByText('Customer One')).toBeInTheDocument();
-  expect(screen.getByText('Customer Two')).toBeInTheDocument();
-});
+  it('displays customer options', () => {
+    render(<CustomerDropdown customers={mockCustomers} onSelectCustomer={jest.fn()} />);
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+    expect(screen.getByText('Jane Smith')).toBeInTheDocument();
+  });
 
-test('calls onSelectCustomer when a customer is selected', () => {
-  const customers = [
-    { id: '1', name: 'Customer One' },
-    { id: '2', name: 'Customer Two' },
-  ];
+  it('calls onSelectCustomer when a customer is selected', () => {
+    const mockOnSelectCustomer = jest.fn();
+    render(<CustomerDropdown customers={mockCustomers} onSelectCustomer={mockOnSelectCustomer} />);
 
-  const onSelectCustomer = jest.fn();
-
-  render(<CustomerDropdown customers={customers} onSelectCustomer={onSelectCustomer} />);
-
-  fireEvent.change(screen.getByRole('combobox'), { target: { value: '1' } });
-
-  expect(onSelectCustomer).toHaveBeenCalledWith('1');
+    fireEvent.change(screen.getByLabelText(/Customer/), { target: { value: '1' } });
+    expect(mockOnSelectCustomer).toHaveBeenCalledWith('1');
+  });
 });

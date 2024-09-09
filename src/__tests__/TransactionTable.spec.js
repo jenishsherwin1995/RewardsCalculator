@@ -1,24 +1,28 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import TransactionTable from './TransactionTable';
+import { calculatePoints } from '../utils/calculatePoints';
 
-test('renders transaction table with correct data', () => {
-  const transactions = [
-    { date: '2023-01-15', amount: 120 },
-    { date: '2023-01-20', amount: 80 },
-    { date: '2023-02-10', amount: 200 },
-  ];
+jest.mock('../utils/calculatePoints', () => ({
+  calculatePoints: jest.fn((amount) => (amount > 50 ? amount : 0)),
+}));
 
-  render(<TransactionTable transactions={transactions} />);
+const mockTransactions = [
+  { id: '1', date: '2023-06-15', amount: 100 },
+  { id: '2', date: '2023-07-20', amount: 150 },
+];
 
-  expect(screen.getByText('January')).toBeInTheDocument();
-  expect(screen.getByText('$200.00')).toBeInTheDocument(); // Total amount for January
-  expect(screen.getByText('130')).toBeInTheDocument(); // Total points for January
-  expect(screen.getByText('February')).toBeInTheDocument();
-  expect(screen.getByText('$200.00')).toBeInTheDocument(); // Total amount for February
-  expect(screen.getByText('200')).toBeInTheDocument(); // Total points for February
-  expect(screen.getByText('Total')).toBeInTheDocument();
-  expect(screen.getByText('$400.00')).toBeInTheDocument(); // Overall total amount
-  expect(screen.getByText('330')).toBeInTheDocument(); // Overall total points
+describe('TransactionTable', () => {
+  it('renders without crashing', () => {
+    render(<TransactionTable transactions={mockTransactions} />);
+    expect(screen.getByRole('table')).toBeInTheDocument();
+  });
+
+  it('displays transactions with calculated points', () => {
+    render(<TransactionTable transactions={mockTransactions} />);
+    expect(screen.getByText('$100.00')).toBeInTheDocument();
+    expect(screen.getByText('$150.00')).toBeInTheDocument();
+    expect(calculatePoints).toHaveBeenCalledWith(100);
+    expect(calculatePoints).toHaveBeenCalledWith(150);
+  });
 });

@@ -1,13 +1,11 @@
-export const constants = {
-    CUSTOM_REWARD_POINTS: 'Customer Rewards Points',
-    CUSTOMER_HEADING: 'Customer',
-    MONTHLY_AMOUNT_REWARD_POINTS: 'Spent Amount & Reward Points',
+export const constants = {    
+    CUSTOMER_HEADING: ' Select Customer',    
     ERROR_MESSAGE: 'An Error occured while fetching the data. Please try again later',
     TOTAL_REWARD_POINTS: 'Total Reward Points',
-    YEAR: 'Year',
+    YEAR: 'Select All Year',
+    REWARDS:'Rewards',
     MONTH: 'Month',
-    SPENT_AMOUNT: 'Spent Amount',
-    EARNED_POINTS: 'Earned Point',
-    TOTAL_EARNED_POINTS: 'Total Earned Point',
-    LOAD_TIMEOUT: 1000
+    YEAR_DATA:'Year',
+    SPENT_AMOUNT: 'Purchased Amount',   
+    TOTAL_EARNED_POINTS: 'Total Earned Points',    
 }
