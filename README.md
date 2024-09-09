@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Customer Rewards Program (Frontend)
 
 A retailer offers a rewards program to its customers, awarding points based on each recorded purchase.  
@@ -109,3 +110,6 @@ reward-calculator/
 ├── package.json
 └── ...
 ```
+=======
+# RewardsCalculator
+>>>>>>> origin/main
