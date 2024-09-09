@@ -1,4 +1,4 @@
-import CustomerRewards from './components/CustomerRewards/CustomerRewards';
+import CustomerRewards from './components/CustomerRewards';
 import './App.css';
 
 function App() {
