@@ -51,20 +51,30 @@ The application uses mock data to simulate the rewards calculation. The mock dat
 
 * Data is grouped based on years if it spans different years
 * Multiple transactions within the month are sumed up together
-* Rounded up rewards
+* Total Reward Amount calculated
 
 * Circular loader and Error handling is implemented
 * Test cases for all of the above scenarios are added
 
 
 ### Running Appilcation Screenshots
-Based on a Single customer with All years
-![image](https://github.com/user-attachments/assets/328c9ff3-f88f-42d2-8d4c-7e0b7d71adc3)
+Customer Transaction Data
+![image](https://github.com/user-attachments/assets/b1f6dcbf-cbc1-44b8-88a7-ad159305a2db)
+Monthly Transaction Data
+![image](https://github.com/user-attachments/assets/28186463-3b82-40b8-9f14-7fa191fe7aa6)
+Customer's Last three months Data
+![image](https://github.com/user-attachments/assets/aa566dd9-855e-422b-b3b9-efd0d1be1696)
+Loading Indicator before table renders
+![image](https://github.com/user-attachments/assets/9dffd3fd-a115-48ab-85e6-f42971b5d7c1)
+Error Scenario
+![image](https://github.com/user-attachments/assets/a434dcef-a085-46b6-8920-39279222fc68)
 
-Based on a Single Customer with Single year selection
-![image](https://github.com/user-attachments/assets/8127e76a-4ccf-4962-8198-0b362b95000f)
 
-Based on a Single Customer with Single year selection. Table shows O without any months.
-![image](https://github.com/user-attachments/assets/35a487b2-19c4-4df6-9caf-f9e3bcb9cc57)
+
+
+
+
+
+
 
 The component, test and api files are under the src folders.
