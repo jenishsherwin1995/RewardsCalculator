@@ -1,4 +1,4 @@
-import { constants } from "../utils/constants";
+import { constants } from "../utils/Constants";
 import logger from '../logger';
 
 export const fetchCustomerTransactionData = async () => {
