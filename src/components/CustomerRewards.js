@@ -1,4 +1,3 @@
-// CustomerRewards.js
 import React, { useState, useEffect, useMemo } from 'react';
 import AllTransactionTable from './transactionTable/allTransactionTable.js';
 import { constants } from '../utils/constants';

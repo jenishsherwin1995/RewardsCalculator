@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper';
 import TableBody from '@mui/material/TableBody';
 import './allTransactionTable.css';
 import CircularProgress from '@mui/material/CircularProgress'
-// Function to render customerCentric table data
+
 const CustomerCentricTable = ({ data }) => (
   <>
     <h4 style={{color:"GrayText"}}>Customer Transaction Data</h4>
@@ -57,7 +57,6 @@ const CustomerCentricTable = ({ data }) => (
   </>
 );
 
-// Function to render monthCentric table data
 const MonthCentricTable = ({ data }) => (
   <>
      <h4 style={{color:"GrayText"}}>Monthly Data</h4>
@@ -109,7 +108,6 @@ const MonthCentricTable = ({ data }) => (
   </>
 );
 
-// Function to render last three months table data
 const LastThreeMonthsTable = ({ data }) => (
   <>
      <h4 style={{color:"GrayText"}}>Customers Last Three Months Data</h4>
@@ -154,21 +152,18 @@ const LastThreeMonthsTable = ({ data }) => (
 
 const AllTransactionTable = ({ customerCentricData, monthCentricData, lastThreeMonthsData }) => {
     const [loading, setLoading] = useState(true);
-
-    // Simulate fetching data with useEffect
-    useEffect(() => {
-      // Simulate an API call delay
+   
+    useEffect(() => {      
       const fetchData = () => {
         setTimeout(() => {
-          setLoading(false); // Set loading to false once data is "fetched"
-        }, 1000); // 1 second delay
+          setLoading(false);
+        }, 1000);
       };
   
       fetchData();
     }, []);
   
-    if (loading) {
-      // Render a loading spinner while data is being fetched
+    if (loading) {    
       return (
         <div className="loading-container">
           <CircularProgress />
