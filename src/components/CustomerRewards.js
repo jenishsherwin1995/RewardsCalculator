@@ -146,7 +146,7 @@ const CustomerRewards = () => {
   }, [AllTransactionData, MonthWiseData, ThreeMonthsData]);
 
   return (
-    errorHandler=="" ?
+    errorHandler==="" ?
     <div>
       <h1>{constants.CustomerRewardpoints}</h1>
       <AllTransactionTable
