@@ -59,11 +59,14 @@ The application uses mock data to simulate the rewards calculation. The mock dat
 
 ### Running Appilcation Screenshots
 Customer Transaction Data
-![image](https://github.com/user-attachments/assets/b1f6dcbf-cbc1-44b8-88a7-ad159305a2db)
+![image](https://github.com/user-attachments/assets/36dbfecd-9410-40a0-9fdb-0e7d1e5517bc)
+
 Monthly Transaction Data
-![image](https://github.com/user-attachments/assets/28186463-3b82-40b8-9f14-7fa191fe7aa6)
+![image](https://github.com/user-attachments/assets/71650d17-3333-4c3c-9d25-9f7d5b74e61b)
+
 Customer's Last three months Data
-![image](https://github.com/user-attachments/assets/aa566dd9-855e-422b-b3b9-efd0d1be1696)
+![image](https://github.com/user-attachments/assets/f396243a-9213-4c1f-a58b-009e278cf1a9)
+
 Loading Indicator before table renders
 ![image](https://github.com/user-attachments/assets/9dffd3fd-a115-48ab-85e6-f42971b5d7c1)
 Error Scenario
@@ -75,6 +78,4 @@ Error Scenario
 
 
 
-
-
-The component, test and api files are under the src folders.
+The component, test files and api files are under the src folders.
