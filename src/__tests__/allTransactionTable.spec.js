@@ -1,3 +1,4 @@
+// AllTransactionTable.spec.js
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import AllTransactionTable from '../transactionTable/AllTransactionTable';
@@ -34,14 +35,6 @@ describe('AllTransactionTable Component', () => {
     { id: 1, name: 'Adam', month: 'August', totalEarnedPoints: 75 },
   ];
 
-  beforeEach(() => {
-    fetchCustomerTransactionData.mockResolvedValue(mockTransactionData);
-    calculatePoints.mockImplementation((amount) => (amount >= 100 ? 2 * (amount - 100) + 50 : amount >= 50 ? amount - 50 : 0)); // Mock calculatePoints based on given criteria
-  });
-
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
   test('renders loading state initially', () => {
     render(
       <AllTransactionTable
