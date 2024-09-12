@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import AllTransactionTable from './transactionTable/allTransactionTable.js';
-import { constants } from '../utils/constants';
-import './customerRewards.css';
-import { fetchCustomerTransactionData } from "../services/apiService";
-import { calculatePoints } from '../utils/calculatePoints.js';
+import AllTransactionTable from './transactionTable/AllTransactionTable.js';
+import { constants } from '../utils/Constants';
+import './CustomerRewards.css';
+import { fetchCustomerTransactionData } from "../services/ApiService";
+import { calculatePoints } from '../utils/CalculatePoints.js';
 
 // This function is to get all Customer transaction data
 const getCustomerCentricData = (allTransactionData) => {
