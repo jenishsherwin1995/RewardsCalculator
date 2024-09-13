@@ -59,13 +59,16 @@ The application uses mock data to simulate the rewards calculation. The mock dat
 
 ### Running Appilcation Screenshots
 Customer Transaction Data
-![image](https://github.com/user-attachments/assets/36dbfecd-9410-40a0-9fdb-0e7d1e5517bc)
+![image](https://github.com/user-attachments/assets/7d2f9672-e6da-4f24-ae62-6719b9798ff8)
+
 
 Monthly Transaction Data
-![image](https://github.com/user-attachments/assets/71650d17-3333-4c3c-9d25-9f7d5b74e61b)
+![image](https://github.com/user-attachments/assets/50f3db40-f59b-46c7-a344-1cf5a324e17c)
+![image](https://github.com/user-attachments/assets/1de366d7-5b2e-4ed3-9002-829b85c147cb)
+![image](https://github.com/user-attachments/assets/f1a40cfb-6a27-43a7-98ad-466352bd842b)
 
-Customer's Last three months Data
-![image](https://github.com/user-attachments/assets/f396243a-9213-4c1f-a58b-009e278cf1a9)
+
+
 
 Loading Indicator before table renders
 ![image](https://github.com/user-attachments/assets/9dffd3fd-a115-48ab-85e6-f42971b5d7c1)
