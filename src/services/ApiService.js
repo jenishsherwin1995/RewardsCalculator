@@ -1,7 +1,7 @@
 import { constants } from "../utils/Constants";
 import logger from '../logger';
 
-export const fetchCustomerTransactionData = async () => {
+export const fetchTransactions = async () => {
   try {
     const response = await fetch("/customerTransactionsData.json");
     if (!response.ok) {
