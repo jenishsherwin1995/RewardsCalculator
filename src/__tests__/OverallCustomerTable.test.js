@@ -28,7 +28,7 @@ describe('OverallCustomerTable', () => {
     render(<OverallCustomerTable customerData={mockCustomerData} totalPointsSum={mockTotalPointsSum} />);    
     expect(screen.getByText(/Overall Customer Reward Points/i)).toBeInTheDocument();
     expect(screen.getByText(/Adam/i)).toBeInTheDocument();
-    expect(screen.getByText(/$120.75/i)).toBeInTheDocument();
+    expect(screen.getByText(/120.75/i)).toBeInTheDocument();
     expect(screen.getByText(/Total Points for All Customers/i)).toBeInTheDocument();
     expect(screen.getByText(/60.75/i)).toBeInTheDocument();
   });

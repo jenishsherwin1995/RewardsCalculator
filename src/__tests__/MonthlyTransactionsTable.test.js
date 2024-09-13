@@ -17,6 +17,7 @@ describe('MonthlyTransactionsTable', () => {
     
     expect(screen.getByText(/Transactions for July 2024/i)).toBeInTheDocument();
     expect(screen.getByText(/Adam/i)).toBeInTheDocument();
-    expect(screen.getByText(/$120.75/i)).toBeInTheDocument();
+    expect(screen.getByText(/120.75/i)).toBeInTheDocument();
+    
   });
 });

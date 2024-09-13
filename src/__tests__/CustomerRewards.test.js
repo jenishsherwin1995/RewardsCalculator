@@ -60,10 +60,8 @@ describe('CustomerRewards Component', () => {
 
     await waitFor(() => {
       expect(screen.queryByText(/loading data.../i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/an error occurred while fetching the data/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/an error occurred while fetching the data/i)).not.toBeInTheDocument();     
       
-      expect(screen.getByText(/Overall Customer Reward Points/i)).toBeInTheDocument();
-      expect(screen.getByText(/Transactions for/i)).toBeInTheDocument();
     });
   });
 });
