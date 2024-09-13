@@ -52,7 +52,7 @@ const CustomerRewards = () => {
 
   if (dataState.loading) {
     return (
-      <div className="loading-container">
+      <div >
         <CircularProgress />
         <p style={{ color: "blue" }}>Loading data...</p>
       </div>
