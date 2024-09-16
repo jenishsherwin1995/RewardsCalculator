@@ -12,16 +12,10 @@ import {
 import {monthMap} from '../utils/MonthMap'
 
 const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
-  const rows = [];
-  const customerTotals = {};
-  const rowSpanCounts = {};
-
+  const rows = [];  
   Object.entries(customerData).forEach(([customerId, { customer, monthlyData }]) => {
     let customerTotalPoints = 0;
-    const uniqueMonths = new Set();
-
-    Object.entries(monthlyData).forEach(([key, transactions]) => {
-      uniqueMonths.add(key);
+    Object.entries(monthlyData).forEach(([key, transactions]) => {      
       transactions.forEach((transaction, index) => {
         customerTotalPoints += transaction.points;
         rows.push({
@@ -33,13 +27,10 @@ const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
           amount: transaction.amount,
           points: transaction.points,
           totalPoints: transactions.reduce((sum, { points }) => sum + points, 0),
-          totalPointsForCustomer: customerTotalPoints,
-          rowspan: rowSpanCounts[customerId] || 1,
+          totalPointsForCustomer: customerTotalPoints,         
         });
       });
-    });
-    customerTotals[customerId] = customerTotalPoints;
-    rowSpanCounts[customerId] = uniqueMonths.size;
+    });    
   });
 
   const sortedRows = rows.sort((a, b) => {
@@ -70,10 +61,10 @@ const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
         <TableBody>
           {sortedRows.map((row, index) => (
             <TableRow key={index}>
-              <TableCell rowSpan={row.rowspan} style={{ fontWeight: row.rowspan > 1 ? 'bold' : 'normal' }}>
+              <TableCell  >
                 {row.customerName}
               </TableCell>
-              <TableCell rowSpan={row.rowspan} style={{ fontWeight: row.rowspan > 1 ? 'bold' : 'normal' }}>
+              <TableCell  >
                 {row.customerId}
               </TableCell>
               <TableCell>{row.transactionId}</TableCell>
