@@ -21,9 +21,7 @@ describe('CustomerRewards Component', () => {
   test('should display loading indicator initially', () => {
     fetchTransactions.mockResolvedValue([]);
     GroupByCustomerAndMonth.mockReturnValue({ customerMonthlyData: {}, monthlyTransactions: {} });
-
     render(<CustomerRewards />);
-
     expect(screen.getByText(/loading data.../i)).toBeInTheDocument();
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });

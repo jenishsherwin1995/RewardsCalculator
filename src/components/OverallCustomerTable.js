@@ -9,6 +9,7 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
+import {monthMap} from '../utils/MonthMap'
 
 const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
   const rows = [];
@@ -18,6 +19,7 @@ const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
   Object.entries(customerData).forEach(([customerId, { customer, monthlyData }]) => {
     let customerTotalPoints = 0;
     const uniqueMonths = new Set();
+
     Object.entries(monthlyData).forEach(([key, transactions]) => {
       uniqueMonths.add(key);
       transactions.forEach((transaction, index) => {
@@ -40,6 +42,13 @@ const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
     rowSpanCounts[customerId] = uniqueMonths.size;
   });
 
+  const sortedRows = rows.sort((a, b) => {
+    if (a.year !== b.year) {
+      return a.year - b.year;
+    }
+    return monthMap[a.month] - monthMap[b.month];
+  });
+
   return (
     <TableContainer component={Paper} style={{ marginBottom: '30px' }}>
       <Typography variant="h6" gutterBottom align="center">
@@ -59,7 +68,7 @@ const OverallCustomerTable = ({ customerData, totalPointsSum }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {sortedRows.map((row, index) => (
             <TableRow key={index}>
               <TableCell rowSpan={row.rowspan} style={{ fontWeight: row.rowspan > 1 ? 'bold' : 'normal' }}>
                 {row.customerName}

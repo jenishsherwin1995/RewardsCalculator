@@ -9,10 +9,21 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
+import { monthMap } from '../utils/MonthMap';
 
-const MonthlyTransactionsTable = ({ monthlyData }) => {
+const MonthlyTransactionsTable = ({ monthlyData }) => {  
+  const sortedMonthlyData = Object.entries(monthlyData)
+    .sort(([aMonthKey], [bMonthKey]) => {
+      const [aMonth, aYear] = aMonthKey.split(' ');
+      const [bMonth, bYear] = bMonthKey.split(' ');
+      if (aYear !== bYear) {
+        return bYear - aYear;
+      }
+      return monthMap[bMonth] - monthMap[aMonth];
+    });
+
   return (
-    Object.entries(monthlyData).map(([monthKey, transactions]) => {      
+    sortedMonthlyData.map(([monthKey, transactions]) => {
       const totalPoints = transactions.reduce((sum, transaction) => sum + (transaction.points || 0), 0);
 
       return (
@@ -23,28 +34,32 @@ const MonthlyTransactionsTable = ({ monthlyData }) => {
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell style={{ fontWeight: 'bold' }}>Month</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Customer Name</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Customer ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Transaction ID</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Year</TableCell>
-                <TableCell style={{ fontWeight: 'bold' }}>Month</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Spent Amount</TableCell>
                 <TableCell style={{ fontWeight: 'bold' }}>Points</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {transactions.map((transaction) => (
+              {transactions.map((transaction, index) => (
                 <TableRow key={transaction.transactionId}>
+                  {index === 0 && (
+                    <TableCell rowSpan={transactions.length} style={{ fontWeight: 'bold' }}>
+                      {transaction.month}
+                    </TableCell>
+                  )}
                   <TableCell>{transaction.customer}</TableCell>
                   <TableCell>{transaction.customerId}</TableCell>
                   <TableCell>{transaction.transactionId}</TableCell>
                   <TableCell>{transaction.year}</TableCell>
-                  <TableCell>{transaction.month}</TableCell>
                   <TableCell>${transaction.amount.toFixed(2)}</TableCell>
                   <TableCell>{transaction.points.toFixed(2)}</TableCell>
                 </TableRow>
               ))}
-              
+
               <TableRow>
                 <TableCell colSpan={6} align="right" style={{ fontWeight: 'bold' }}>
                   Total Earned Points:
