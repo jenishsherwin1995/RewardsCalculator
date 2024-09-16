@@ -49,7 +49,7 @@ const MonthlyTransactionsTable = ({ monthlyData }) => {
                 <TableCell colSpan={6} align="right" style={{ fontWeight: 'bold' }}>
                   Total Earned Points:
                 </TableCell>
-                <TableCell align="center" style={{ fontWeight: 'bold' }}>
+                <TableCell align="left" style={{ fontWeight: 'bold' }}>
                   {totalPoints.toFixed(2)}
                 </TableCell>
               </TableRow>
