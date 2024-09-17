@@ -58,31 +58,21 @@ export const getLastThreeMonthsData = (transactions) => {
 export const calculateLastThreeMonthsRewards = (transactions) => {
   // Get the last three months data
   const lastThreeMonthsData = getLastThreeMonthsData(transactions);
-
   // Calculate rewards for the last three months data
-  const { customers } = calculateRewards(lastThreeMonthsData);
-
+  const { customers } = calculateRewards(lastThreeMonthsData);  
   // Flatten transactions for the last three months 
   const allTransactions = Object.values(customers).flatMap(customer => 
     customer.transactions.map(transaction => ({
       ...transaction,
-      customer: customer.customer
+      customer: customer.customer,
+      monthYear: new Date(transaction.date).toLocaleString('default', { month: 'long', year: 'numeric' }),
+      month: new Date(transaction.date).getMonth(),
+      year: new Date(transaction.date).getFullYear()
     }))
   );
-
-  // Convert transactions to include month and year for sorting
-  const transactionsWithMonthYear = allTransactions.map(transaction => {
-    const transactionDate = new Date(transaction.date);
-    return {
-      ...transaction,
-      monthYear: transactionDate.toLocaleString('default', { month: 'long', year: 'numeric' }),
-      month: transactionDate.getMonth(),
-      year: transactionDate.getFullYear()
-    };
-  });
-
-  // Sort transactions by year and month in ascending order
-  transactionsWithMonthYear.sort((a, b) => {
+ 
+    // Sort transactions by year and month in ascending order
+  allTransactions.sort((a, b) => {
     if (a.year === b.year) {
       return a.month - b.month;
     }
@@ -90,11 +80,11 @@ export const calculateLastThreeMonthsRewards = (transactions) => {
   });
 
   // This function is to calculate total points and total amount for the last three months
-  const totalPoints = transactionsWithMonthYear.reduce((acc, { points }) => acc + points, 0);
-  const totalAmount = transactionsWithMonthYear.reduce((acc, { amount }) => acc + amount, 0);
+  const totalPoints = allTransactions.reduce((acc, { points }) => acc + points, 0);
+  const totalAmount = allTransactions.reduce((acc, { amount }) => acc + amount, 0);
 
   // This function is to Group transactions by month and year
-  const transactionsByMonth = transactionsWithMonthYear.reduce((acc, { monthYear, ...transaction }) => {
+  const transactionsByMonth = allTransactions.reduce((acc, { monthYear, ...transaction }) => {
     if (!acc[monthYear]) {
       acc[monthYear] = {
         transactions: [],
@@ -107,7 +97,7 @@ export const calculateLastThreeMonthsRewards = (transactions) => {
     acc[monthYear].totalAmount += transaction.amount;
     return acc;
   }, {});
-
+  
   // Convert grouped data to an array format for rendering
   const sortedGroupedTransactions = Object.entries(transactionsByMonth).map(([monthYear, { transactions, totalPoints, totalAmount }]) => ({
     monthYear,
