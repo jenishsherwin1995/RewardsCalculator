@@ -15,11 +15,12 @@ const CustomerRewards = () => {
     const fetchTransactions = async () => {
       try {
         const data = await getTransactionsData();
+        setLoading(false);
         setTransactions(data);
       } catch (err) {
         setError('Error fetching transaction data');
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
 
