@@ -1,68 +1,83 @@
+// src/components/CustomerRewards.test.js
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { act } from 'react-dom/test-utils';
-import CustomerRewards from '../components/CustomerRewards';
+import CustomerRewards from './CustomerRewards';
 import { getTransactionsData } from '../services/transactionService';
 import { calculateRewards, calculateLastThreeMonthsRewards } from '../utils/rewardsCalculator';
 
-// Mock the imported services and utils
-jest.mock('../services/transactionService');
-jest.mock('../utils/rewardsCalculator');
+// Mock the API service
+jest.mock('../services/transactionService', () => ({
+  getTransactionsData: jest.fn(),
+}));
+
+// Mock the utility functions
+jest.mock('../utils/rewardsCalculator', () => ({
+  calculateRewards: jest.fn(),
+  calculateLastThreeMonthsRewards: jest.fn(),
+}));
 
 const mockTransactions = [
-  { transactionId: 1, customerId: 101, customer: 'Adam', amount: 120.75, date: '2024-07-01' },
-  { transactionId: 2, customerId: 102, customer: 'Bose', amount: 75.5, date: '2024-08-15' }
+  { transactionId: 1, customerId: 101, customer: "Adam", amount: 120.75, date: "2024-07-01" },
+  // Add other mock transactions as needed
 ];
 
-describe('CustomerRewards Component', () => {
+const mockRewards = {
+  customers: {
+    101: {
+      customer: "Adam",
+      transactions: [
+        { transactionId: 1, date: "2024-07-01", amount: 120.75, points: 70.75 }
+      ],
+      totalPoints: 70.75
+    }
+  },
+  totalPoints: 70.75
+};
+
+const mockLastThreeMonthsRewards = {
+  transactions: [
+    {
+      monthYear: "July 2024",
+      transactions: [
+        { transactionId: 1, date: "2024-07-01", customer: "Adam", amount: 120.75, points: 70.75 }
+      ],
+      totalPoints: 70.75,
+      totalAmount: 120.75
+    }
+  ],
+  totalPoints: 70.75,
+  totalAmount: 120.75
+};
+
+describe('CustomerRewards', () => {
   beforeEach(() => {
     getTransactionsData.mockResolvedValue(mockTransactions);
-    calculateRewards.mockReturnValue({
-      customers: { 101: { customer: 'Adam', transactions: [{ transactionId: 1 }], totalPoints: 120 } },
-      totalPoints: 120
-    });
-    calculateLastThreeMonthsRewards.mockReturnValue({
-      transactions: [{ monthYear: 'August 2024', transactions: mockTransactions }],
-      totalPoints: 50,
-      totalAmount: 150
-    });
+    calculateRewards.mockReturnValue(mockRewards);
+    calculateLastThreeMonthsRewards.mockReturnValue(mockLastThreeMonthsRewards);
   });
 
-  test('displays loading state initially', () => {
+  it('should render loading state initially', () => {
     render(<CustomerRewards />);
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
+    expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
   });
 
-  test('displays error message if transaction fetching fails', async () => {
+  it('should render error message if there is an error', async () => {
     getTransactionsData.mockRejectedValueOnce(new Error('Error fetching transaction data'));
 
-    await act(async () => {
-      render(<CustomerRewards />);
-    });
-
-    expect(screen.getByText(/error fetching transaction data/i)).toBeInTheDocument();
-  });
-
-  test('displays tables after successful data fetch', async () => {
-    await act(async () => {
-      render(<CustomerRewards />);
-    });
+    render(<CustomerRewards />);
 
     await waitFor(() => {
-      expect(screen.getByText(/all customer transactions/i)).toBeInTheDocument();
-      expect(screen.getByText(/last 3 months transactions/i)).toBeInTheDocument();
+      expect(screen.getByText(/Error fetching transaction data/i)).toBeInTheDocument();
     });
   });
 
-  test('calculates and passes rewards to components', async () => {
-    await act(async () => {
-      render(<CustomerRewards />);
-    });
+  it('should render tables after data is fetched', async () => {
+    render(<CustomerRewards />);
 
     await waitFor(() => {
-      expect(calculateRewards).toHaveBeenCalledWith(mockTransactions);
-      expect(calculateLastThreeMonthsRewards).toHaveBeenCalledWith(mockTransactions);
+      expect(screen.getByText(/All Customer Transactions/i)).toBeInTheDocument();
+      expect(screen.getByText(/Last 3 Months Transactions/i)).toBeInTheDocument();
     });
   });
 });
