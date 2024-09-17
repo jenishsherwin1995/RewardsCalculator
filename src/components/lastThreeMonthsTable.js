@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TableFooter } from '@mui/material';
-import { calculateMonthlyTotals } from '../utils/rewardsCalculator'; // Adjust the path as necessary
+import { calculateMonthlyTotals } from '../utils/rewardsCalculator';
 
 const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
 
