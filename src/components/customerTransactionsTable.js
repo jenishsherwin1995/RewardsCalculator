@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography } from '@mui/material';
 
 const CustomerTransactionsTable = ({ customers, totalPoints }) => {
@@ -46,11 +45,6 @@ const CustomerTransactionsTable = ({ customers, totalPoints }) => {
       </Table>
     </TableContainer>
   );
-};
-
-CustomerTransactionsTable.propTypes = {
-  customers: PropTypes.object.isRequired,
-  totalPoints: PropTypes.number.isRequired,
 };
 
 export default CustomerTransactionsTable;
