@@ -1,18 +1,11 @@
 import React from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TableFooter } from '@mui/material';
+import { calculateMonthlyTotals } from '../utils/rewardsCalculator'; // Adjust the path as necessary
 
 const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
 
-  // This is to extract total points and total purchased amount per month wise
-  const monthlyTotals = transactions.reduce((acc, { monthYear, transactions }) => {
-    const monthTotalPoints = transactions.reduce((sum, { points }) => sum + points, 0);
-    const monthTotalAmount = transactions.reduce((sum, { amount }) => sum + amount, 0);
-    acc[monthYear] = {
-      totalPoints: monthTotalPoints,
-      totalAmount: monthTotalAmount,
-    };
-    return acc;
-  }, {});
+  //util function to extract total points and total purchased amount per month wise
+  const monthlyTotals = calculateMonthlyTotals(transactions);
 
   // This is to flatten transactions and include monthYear, monthTotalPoints, monthTotalAmount, and rowspan
   const rows = transactions.flatMap(({ monthYear, transactions }) => 
@@ -36,7 +29,6 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Monthly Purchased Amounts</TableCell>
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Monthly Earned Points</TableCell>
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Customer Name</TableCell>
-           
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Purchased Amount</TableCell>
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Earned Points</TableCell>
           </TableRow>
@@ -52,7 +44,6 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
                 </>
               )}
               <TableCell>{customer || 'Unknown'}</TableCell>
-             
               <TableCell>{amount.toFixed(2)}</TableCell>
               <TableCell>{points.toFixed(2)}</TableCell> {/* Earned Points for each transaction */}
             </TableRow>
@@ -61,9 +52,7 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={2} sx={{ textAlign: 'right', fontWeight:"bold",fontSize:"14px" }}> Total Rewards</TableCell>
-            
-           
-            <TableCell style={{fontWeight:"bold", fontSize:"14px"}}>{totalPoints.toFixed(2)}Points</TableCell>
+            <TableCell style={{fontWeight:"bold", fontSize:"14px"}}>{totalPoints.toFixed(2)} Points</TableCell>
           </TableRow>
         </TableFooter>
       </Table>
