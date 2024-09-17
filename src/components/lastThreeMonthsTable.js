@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 
 const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
 
-  // Extract total points and total purchased amount per month wise
+  // This is to extract total points and total purchased amount per month wise
   const monthlyTotals = transactions.reduce((acc, { monthYear, transactions }) => {
     const monthTotalPoints = transactions.reduce((sum, { points }) => sum + points, 0);
     const monthTotalAmount = transactions.reduce((sum, { amount }) => sum + amount, 0);
@@ -14,7 +14,7 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
     return acc;
   }, {});
 
-  // Flatten transactions and include monthYear, monthTotalPoints, monthTotalAmount, and rowspan
+  // This is to flatten transactions and include monthYear, monthTotalPoints, monthTotalAmount, and rowspan
   const rows = transactions.flatMap(({ monthYear, transactions }) => 
     transactions.map((transaction, index) => ({
       ...transaction,
@@ -38,7 +38,7 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Customer Name</TableCell>
            
             <TableCell sx={{ backgroundColor: 'lightgrey' }}>Purchased Amount</TableCell>
-            <TableCell sx={{ backgroundColor: 'lightgrey' }}>Earned Points</TableCell> {/* New Earned Points Column */}
+            <TableCell sx={{ backgroundColor: 'lightgrey' }}>Earned Points</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

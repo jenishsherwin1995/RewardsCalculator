@@ -1,4 +1,4 @@
-// Function to calculate rewards for each customer based on transactions
+// This function is to calculate rewards for each customer based on transactions
 export const calculateRewards = (transactions) => {
   return transactions.reduce(
     (acc, { customerId, customer, amount, date, transactionId }) => {
@@ -13,12 +13,11 @@ export const calculateRewards = (transactions) => {
         points += (amount - 50) * 1;
       }
 
-      // Initialize customer data if not present
+      // To initialize customer data if not present
       if (!acc.customers[customerId]) {
         acc.customers[customerId] = { customer, transactions: [], totalPoints: 0 };
       }
 
-      // Use concat to add transactions immutably
       acc.customers[customerId] = {
         ...acc.customers[customerId],
         transactions: acc.customers[customerId].transactions.concat({
@@ -38,7 +37,7 @@ export const calculateRewards = (transactions) => {
   );
 };
 
-// Function to filter the last three months data of the current year
+// This function is to filter the last three months data of the current year
 export const getLastThreeMonthsData = (transactions) => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
@@ -90,11 +89,11 @@ export const calculateLastThreeMonthsRewards = (transactions) => {
     return a.year - b.year;
   });
 
-  // Calculate total points and total amount for the last three months
+  // This function is to calculate total points and total amount for the last three months
   const totalPoints = transactionsWithMonthYear.reduce((acc, { points }) => acc + points, 0);
   const totalAmount = transactionsWithMonthYear.reduce((acc, { amount }) => acc + amount, 0);
 
-  // Group transactions by month and year
+  // This function is to Group transactions by month and year
   const transactionsByMonth = transactionsWithMonthYear.reduce((acc, { monthYear, ...transaction }) => {
     if (!acc[monthYear]) {
       acc[monthYear] = {

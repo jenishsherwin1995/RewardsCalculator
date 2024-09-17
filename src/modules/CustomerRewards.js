@@ -1,4 +1,3 @@
-// components/CustomerRewards.js
 import React, { useEffect, useState, useMemo } from 'react';
 import { getTransactionsData } from '../services/transactionService';
 import { calculateRewards, calculateLastThreeMonthsRewards } from '../utils/rewardsCalculator';
@@ -45,8 +44,7 @@ const CustomerRewards = () => {
     return <div>{error}</div>;
   }
 
-  return (  
-      
+  return (        
     <Container>
     <Box display="flex" flexDirection="row">
        <Box flex={1} mr={2}>
@@ -56,7 +54,7 @@ const CustomerRewards = () => {
       </Box>
       <Box flex={1}>
       {/* Contains the CustomerTransactionsTable component that displays all customer transactions. */} 
-      <LastThreeMonthsTable transactions={lastThreeMonthsTransactions} totalPoints={totalLastThreeMonthsPoints} totalAmount={totalAmountOfThreeMonths} />     
+      <LastThreeMonthsTable transactions={lastThreeMonthsTransactions} totalPoints={totalLastThreeMonthsPoints} totalAmount={totalAmountOfThreeMonths} />    
         
       </Box>
       </Box>
