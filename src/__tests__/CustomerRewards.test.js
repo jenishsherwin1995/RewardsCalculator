@@ -1,25 +1,21 @@
-// src/components/CustomerRewards.test.js
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import CustomerRewards from './CustomerRewards';
+import CustomerRewards from '../modules/CustomerRewards';
 import { getTransactionsData } from '../services/transactionService';
 import { calculateRewards, calculateLastThreeMonthsRewards } from '../utils/rewardsCalculator';
 
-// Mock the API service
 jest.mock('../services/transactionService', () => ({
   getTransactionsData: jest.fn(),
 }));
 
-// Mock the utility functions
 jest.mock('../utils/rewardsCalculator', () => ({
   calculateRewards: jest.fn(),
   calculateLastThreeMonthsRewards: jest.fn(),
 }));
 
 const mockTransactions = [
-  { transactionId: 1, customerId: 101, customer: "Adam", amount: 120.75, date: "2024-07-01" },
-  // Add other mock transactions as needed
+  { transactionId: 1, customerId: 101, customer: "Adam", amount: 120.75, date: "2024-07-01" }
 ];
 
 const mockRewards = {
