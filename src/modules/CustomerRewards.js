@@ -30,7 +30,7 @@ const CustomerRewards = () => {
   const { customers, totalPoints: totalCustomerPoints } = useMemo(() => calculateRewards(transactions), [transactions]);
 
   //This useMemo ensures the calculation of rewards for the last three months is only performed when transactions changes.
-  const { transactions: lastThreeMonthsTransactions, totalPoints: totalLastThreeMonthsPoints, totalAmount:totalAmountOfThreeMonths } = useMemo(
+  const { transactions: lastThreeMonthsTransactions, totalPoints: totalLastThreeMonthsPoints} = useMemo(
     () => calculateLastThreeMonthsRewards(transactions),
     [transactions]
   );
