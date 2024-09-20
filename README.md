@@ -63,9 +63,11 @@ Customer Transaction Data
 
 
 Monthly Transaction Data
-![image](https://github.com/user-attachments/assets/9c9def8b-f0ca-45be-8937-a40eeda8bf99)
+![image](https://github.com/user-attachments/assets/546588fa-0703-4dcf-b0f3-604cc9750afa)
+
 Last three months transactions data
-![image](https://github.com/user-attachments/assets/0bad8f6e-9ecb-4799-9cb7-c54ec6695cb5)
+![image](https://github.com/user-attachments/assets/2df0bde6-3a3d-4b63-8b90-3a0d22c33345)
+
 
 Loading Indicator before table renders
 ![image](https://github.com/user-attachments/assets/9dffd3fd-a115-48ab-85e6-f42971b5d7c1)
