@@ -20,7 +20,7 @@ const CustomerRewards = () => {
       } catch (err) {
         setError('Error fetching transaction data');
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
 

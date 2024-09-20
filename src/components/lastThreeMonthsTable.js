@@ -39,12 +39,12 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
               {isFirstInMonth && (
                 <>
                   <TableCell rowSpan={rowspan}>{monthYear.split(' ')[0]}</TableCell>
-                  <TableCell rowSpan={rowspan}>{monthTotalAmount.toFixed(2)}</TableCell>
+                  <TableCell rowSpan={rowspan}>${monthTotalAmount.toFixed(2)}</TableCell>
                   <TableCell rowSpan={rowspan}>{monthTotalPoints.toFixed(2)}</TableCell>
                 </>
               )}
               <TableCell>{customer || 'Unknown'}</TableCell>
-              <TableCell>{amount.toFixed(2)}</TableCell>
+              <TableCell>$ {amount.toFixed(2)}</TableCell>
               <TableCell>{points.toFixed(2)}</TableCell> {/* Earned Points for each transaction */}
             </TableRow>
           ))}

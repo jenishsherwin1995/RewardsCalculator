@@ -29,7 +29,7 @@ const CustomerTransactionsTable = ({ customers, totalPoints }) => {
                 )}
                 <TableCell>{transactionId}</TableCell>
                 <TableCell>{new Date(date).toLocaleDateString()}</TableCell>
-                <TableCell>{amount}</TableCell>
+                <TableCell>${amount}</TableCell>
                 <TableCell>{points}</TableCell>
                 {index === 0 && (
                   <TableCell rowSpan={transactions.length}>{totalPoints}</TableCell>
