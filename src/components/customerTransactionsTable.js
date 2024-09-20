@@ -4,7 +4,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 const CustomerTransactionsTable = ({ customers, totalPoints }) => {
   return (
     <TableContainer component={Paper}>
-      <Typography variant="h6" gutterBottom>All Customer Transactions</Typography>
+      <Typography variant="h6" gutterBottom >All Customer Transactions</Typography>
       <Table>
         <TableHead>
           <TableRow>
@@ -38,8 +38,8 @@ const CustomerTransactionsTable = ({ customers, totalPoints }) => {
             ))
           ))}
           <TableRow>
-            <TableCell colSpan={6} sx={{ textAlign: 'right' }}>Total Earned Points of All Customers</TableCell>
-            <TableCell>{totalPoints}</TableCell>
+            <TableCell colSpan={6} sx={{ textAlign: 'right', fontWeight: "bold", fontSize: "14px" }}>Total Reward Points</TableCell>
+            <TableCell style={{fontWeight: "bold", fontSize: "14px" }}>{totalPoints}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

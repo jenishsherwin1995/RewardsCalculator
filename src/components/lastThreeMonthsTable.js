@@ -57,8 +57,8 @@ const LastThreeMonthsTable = ({ transactions, totalPoints}) => {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2} sx={{ textAlign: 'right', fontWeight: "bold", fontSize: "14px" }}> Total Rewards</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "14px" }}>{totalPoints.toFixed(2)} Points</TableCell>
+            <TableCell colSpan={2} sx={{ textAlign: 'right', fontWeight: "bold", fontSize: "14px" }}> Total Reward Points</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "14px" }}>{totalPoints.toFixed(2)}</TableCell>
           </TableRow>
         </TableFooter>
       </Table>
