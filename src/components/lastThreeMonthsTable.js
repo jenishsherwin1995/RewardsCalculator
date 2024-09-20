@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Typography, TableFooter } from '@mui/material';
-import { calculateMonthlyTotals } from '../utils/rewardsCalculator';
+import { calculateMonthlyTotals } from '../utils/calculateMonthlyTotals';
 
-const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
+const LastThreeMonthsTable = ({ transactions, totalPoints}) => {
+  const [monthlyTotals, setMonthlyTotals] = useState({});
 
-  //util function to extract total points and total purchased amount per month wise
-  const monthlyTotals = calculateMonthlyTotals(transactions);
+  useEffect(() => {
+    const fetchMonthlyTotals = async () => {
+      const totals = await calculateMonthlyTotals(transactions);
+      setMonthlyTotals(totals);
+    };
 
-  // This is to flatten transactions and include monthYear, monthTotalPoints, monthTotalAmount, and rowspan
+    fetchMonthlyTotals();
+  }, [transactions]);
+
   const rows = transactions.flatMap(({ monthYear, transactions }) => 
     transactions.map((transaction, index) => ({
       ...transaction,
       monthYear,
-      monthTotalPoints: monthlyTotals[monthYear].totalPoints, // Total points for the month
-      monthTotalAmount: monthlyTotals[monthYear].totalAmount, // Total purchased amount for the month
-      isFirstInMonth: index === 0, // Mark the first row for the month
-      rowspan: transactions.length // Set rowspan to the number of transactions for that month
+      monthTotalPoints: monthlyTotals[monthYear]?.totalPoints || 0,
+      monthTotalAmount: monthlyTotals[monthYear]?.totalAmount || 0,
+      isFirstInMonth: index === 0,
+      rowspan: transactions.length,
     }))
   );
 
@@ -45,14 +51,14 @@ const LastThreeMonthsTable = ({ transactions, totalPoints, totalAmount }) => {
               )}
               <TableCell>{customer || 'Unknown'}</TableCell>
               <TableCell>$ {amount.toFixed(2)}</TableCell>
-              <TableCell>{points.toFixed(2)}</TableCell> {/* Earned Points for each transaction */}
+              <TableCell>{points.toFixed(2)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2} sx={{ textAlign: 'right', fontWeight:"bold",fontSize:"14px" }}> Total Rewards</TableCell>
-            <TableCell style={{fontWeight:"bold", fontSize:"14px"}}>{totalPoints.toFixed(2)} Points</TableCell>
+            <TableCell colSpan={2} sx={{ textAlign: 'right', fontWeight: "bold", fontSize: "14px" }}> Total Rewards</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "14px" }}>{totalPoints.toFixed(2)} Points</TableCell>
           </TableRow>
         </TableFooter>
       </Table>

@@ -57,4 +57,18 @@ describe('CustomerRewards', () => {
     render(<CustomerRewards />);
     expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
   });
+  it('should render error message if there is an error', async () => {
+    getTransactionsData.mockRejectedValueOnce(new Error('Error fetching transaction data'));
+    render(<CustomerRewards />);
+    await waitFor(() => {
+      expect(screen.getByText(/Error fetching transaction data/i)).toBeInTheDocument();
+    });
+  });
+  it('should render tables after data is fetched', async () => {
+    render(<CustomerRewards />);
+    await waitFor(() => {
+      expect(screen.getByText(/All Customer Transactions/i)).toBeInTheDocument();
+      expect(screen.getByText(/Last 3 Months Transactions/i)).toBeInTheDocument();
+    });
+  });
 });

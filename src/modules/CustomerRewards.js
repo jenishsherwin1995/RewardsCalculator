@@ -14,8 +14,7 @@ const CustomerRewards = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const data = await getTransactionsData();
-        setLoading(false);
+        const data = await getTransactionsData();        
         setTransactions(data);
       } catch (err) {
         setError('Error fetching transaction data');
@@ -55,7 +54,7 @@ const CustomerRewards = () => {
       </Box>
       <Box flex={1}>
       {/* Contains the CustomerTransactionsTable component that displays all customer transactions. */} 
-      <LastThreeMonthsTable transactions={lastThreeMonthsTransactions} totalPoints={totalLastThreeMonthsPoints} totalAmount={totalAmountOfThreeMonths} />    
+      <LastThreeMonthsTable transactions={lastThreeMonthsTransactions} totalPoints={totalLastThreeMonthsPoints} />    
         
       </Box>
       </Box>

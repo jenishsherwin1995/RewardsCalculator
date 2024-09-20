@@ -1,4 +1,4 @@
-import { constants } from "../utils/Constants";
+import { constants } from "../utils/constants";
 
 export const getTransactionsData = async () => {
   try {
